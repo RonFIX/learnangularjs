@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Hello AngularJS</title>
+		<meta charset="utf-8"/>
+		
+		<script type="text/javascript" src="file:///home/anirudh/Dropbox/WebDev/learnAngularJS/angular.js"> </script>		
+	</head>
+	
+	<!-- <body ng-app>
+		<p ng-init="myval='anirudh'"> {{'Loading ' + myval}} </p>
+	</body> -->
+	<body>
+		<div ng-app>
+			<p> This part of code is processed by AngularJS </p>
+			<p> {{'Do you know that 1 + 1 = ' + (1+1) }}</p>
+		</div>
+		<br/>
+		<br/>
+		
+		<div>
+			<p> AngularJS doesn't care about this piece of code because there is no ng-app declaration for it</p>
+			<p> {{'Do you know that 1 + 1 = ' + (1+1) }}</p>
+		</div>
+		
+		<br/>
+		<br/>
+		<div ng-app>
+			<p> Declaring ng-app twice is not of any use </p>
+			<p> {{'Do you know that 1 + 1 = ' + (1+1) }}</p>
+		</div>
+
+	</body>
+</html>
