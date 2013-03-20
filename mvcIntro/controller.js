@@ -5,26 +5,32 @@ given view this controller is to be used. This is how you declare:
 <div ng-controller="myController"></div>
 
 */
-var scope;
+var scopeGlobal;
 
 function myController($scope){
-	// window.alert("Inside Controller: called when DOM tree is created");
-
-	$scope.stockPrice = {
+	//I didn't wanted to use window.alert() to show that controller is called first
+  	console.log("First: Inside AngularJS Controller: called when DOM tree is created");
+  
+  	//Stock price object.
+  	$scope.stockPrice = {
 		"Google":  "600$",
 		"Microsoft": "400$",
 		"VMWare": "500$"
 	};
 
+  	//Select VMWare by default
 	$scope.selectedCompany = "VMWare";
 
-	scope = $scope;
+  	//Store $scope in a global variable so that subscribeBtnClicked() 	
+  	//which is not part of controller code can also see values of scope
+	scopeGlobal = $scope;
 }
 
 function subscribeBtnClicked(){
-	alert("Mail id:  " + scope.emailId);
+  	//You need to read value from DOM tree. It is auto populated
+	alert("Mail id:  " + scopeGlobal.emailId);
 }
 
 function onDomLoaded(){
-	window.alert("inside HTML onload, called when DOM is rendered");
+	console.log("Second: Inside HTML onload, called when DOM is rendered");
 }
