@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+	<title>ngNonBindable</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ngNonBindable Example"/>		
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+</head>
+
+<body ng-app>
+	<p> {{'AngularJS expression: 1+1 = ' + (1+1)}}</p>
+	<p ng-non-bindable>{{ 'Ignored by AngularJS 1+1 = ' + (1+1)}} </p>
+	<p class="ng-non-bindable"> {{ 'Ignored by AngularJS 1+1 = ' + (1+1)}} </p>
+</body>
+</html>
