@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>ng-class</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ng-class example"/>
+
+	<style>
+		.red{
+			background-color: tomato;
+		}
+		.green{
+			background-color: lightgreen;
+		}
+		.blueFont{
+			color: blue;
+		}
+	</style>
+
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+
+	<script src="myController.js"> </script>
+</head>
+
+<body ng-app ng-controller="MyCtrl">
+	<table border="1" width="300">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Marks</th>
+			</tr>
+		</thead>	
+
+		<tbody>
+			<!-- We have provided ng-class an javascript object inside double quotes.
+			Each classname is key in the object and if it has to be applied to the current element its value is given as true.
+			-->
+			<tr ng-repeat="student in studentList" ng-class="{blueFont:true, red: student.marks<40, green: student.marks>90}">
+				<td>{{student.name}}</td>
+				<td>{{student.marks}}</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
