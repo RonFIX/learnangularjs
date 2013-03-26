@@ -7,11 +7,14 @@
 	<meta name="application-name" content="ng-class example"/>
 
 	<style>
-		.red{
+		.redBg{
 			background-color: tomato;
 		}
-		.green{
+		.greenBg{
 			background-color: lightgreen;
+		}
+		.greyBg{
+			background-color: grey;
 		}
 		.blueFont{
 			color: blue;
@@ -37,11 +40,23 @@
 			<!-- We have provided ng-class an javascript object inside double quotes.
 			Each classname is key in the object and if it has to be applied to the current element its value is given as true.
 			-->
-			<tr ng-repeat="student in studentList" ng-class="{blueFont:true, red: student.marks<40, green: student.marks>90}">
+			<tr ng-repeat="student in studentList" ng-class="{blueFont:true, redBg: student.marks<40, greenBg: student.marks>90}">
 				<td>{{student.name}}</td>
 				<td>{{student.marks}}</td>
 			</tr>
 		</tbody>
+
 	</table>
+
+	<!-- =====================================================================
+	Another example of how to use ng-class
+	====================================================================== -->
+	<br/><br/><br/>
+	<span> Choose a theme to highlight paragraph below &nbsp;&nbsp;&nbsp;</span>
+	<select ng-model="selectedTheme">
+		<option value="{{css}}" ng-repeat="(themeName,css) in styleSet">{{themeName}}</option>
+	</select>
+
+	<p ng-class="selectedTheme">Theme is applied on this text</p>
 </body>
 </html>

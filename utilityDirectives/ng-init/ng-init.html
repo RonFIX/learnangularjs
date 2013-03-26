@@ -6,10 +6,12 @@
 	<meta charset="utf-8"/>
 	<meta name="application-name" content="ng-init example"/>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
 </head>
 
 <body ng-app> 
+<!-- You can write multiple statements in ng-init seperated like ';' just like you write in JS code -->
 	<select ng-init="companyName='VMWare'; stockVal='200$';" ng-model="companyName">
 		<option value="Microsoft">Microsoft</option>
 		<option value="Google">Google</option>
