@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title>ng-click</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ng-click example"/>
+
+	<style>
+	.clickable{
+		text-decoration: underline;
+		opacity: 0.5;
+	}
+	.clickable:hover,.clickable:focus{
+		opacity: 1.0;
+		color: blue;
+		cursor: pointer;
+	}
+	</style>
+
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+
+	<script>
+	function MyCtrl($scope){
+		$scope.myval = 5;
+
+		$scope.ctrlClickHandler = function(){
+			alert("Inside controller: value of myval is " + $scope.myval);
+		}		
+	}
+
+	function globalClickHandler(){
+		alert("Inside global click handler ");
+	}
+	</script>
+</head>
+
+<body ng-app ng-controller="MyCtrl">
+	
+	<h2 class="clickable" onclick="ctrlClickHandler();"> Click me: I use HTML's onclick </h2>
+	<p> Clicking on it will do nothing as "ctrlClickHandler()" is expected to be a global function whereas we have defined
+	ctrlClickHandler inside our controller. However ng-click will be give you access to controller function</p>
+
+	<h2 class="clickable" ng-click="globalClickHandler();"> Click me: I use Angular's ng-click but call global function</h2>
+	<p>Clicking on it will do nothing since you can't call global javascript functions from inside ng-click. 
+	The namespace for all functions and variables is $scope in Angular's directives</p>
+
+	<!-- ng-click allows you to access model variables whereas onclick doesn't. -->
+	<h2 class="clickable" ng-click="myval=myval-1; ctrlClickHandler();"> Click me: I use Angular's ng-click </h2>
+	<p> {{"myval variable's current value = " + myval }}</p>
+	
+	
+
+</body>
+</html>

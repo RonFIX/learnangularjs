@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<title>ng-disabled</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ng-disabled example"/>
+
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+	
+</head>
+
+<body ng-app>
+	
+	<p> With AngularJS you can control enabling and disabling of an element based on some condition directly in HTML. With Jquery or JavaScript one will to remove the element's disabled attribute manually.</p>
+	
+	<!-- =====================================================================
+	Just two lines of code in AngularJS
+	====================================================================== -->
+	<button ng-disabled="!checkboxVal" type="button"> Disabled Button </button>
+	<input ng-init="checkboxVal=false" type="checkbox" ng-model="checkboxVal"> Remove disabled attribute using AngularJS </input>
+		
+	<!-- =====================================================================
+	The following code show you how to do this in JavaScript
+	====================================================================== -->
+	<br/><hr/><br/>
+	<p> Even though the button shown below has <code>disabled </code> attribute's value as "false" it is still disabled. This is because
+		in HTML presence of boolean attribute manifests that its behaviour should be applied </p>
+	<br/>
+	<button id="button2" disabled="false" type="button">Disabled Button </button>
+	<input type="checkbox" onchange="checkBoxValChanged(this.checked)"> Remove disabled attribute using JavaScript </button>
+	<script>
+		function checkBoxValChanged(checked){
+			if(checked){
+				document.getElementById("button2").removeAttribute("disabled");
+			}else{
+				//You do not need to set value for disabled attribute as true. It should work without it.
+        		//To make it work in firefox I had to add it.
+				document.getElementById("button2").setAttribute("disabled",true);
+			}
+		}
+	</script>
+	
+	
+
+</body>
+</html>
