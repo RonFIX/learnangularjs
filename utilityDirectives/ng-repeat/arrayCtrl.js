@@ -1,4 +1,4 @@
-function MyCtrl($scope){
+function ArrayCtrl($scope){
 	$scope.studentList = [
 		{
 			name: "Michael",
