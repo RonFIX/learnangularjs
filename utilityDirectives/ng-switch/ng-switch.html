@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title>ng-switch</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ng-switch example"/>
+
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+	
+</head>
+
+<body ng-app>
+	
+	<span>Choose an option?</span>
+	<select ng-model="selectVal">
+		<option value="emailMe">Send me a Hi Message</option>
+		<option value="exploreBlog">Explore my other blog</option>
+	</select>
+	
+	<!-- The value in the switch case changes when you select an option from the select element. 
+	You can read more about ng-model here
+	http://learnangularjs.blogspot.in/2013/03/brief-introduction-to-model-view.html
+	 -->
+
+	<div ng-switch on="selectVal">
+		<!-- case emailMe -->
+		<a ng-switch-when="emailMe" href="mailto:anirudhtomer@gmail.com">Click to send me an email</a>
+
+		<!-- case exploreBlog -->
+		<iframe ng-switch-when="exploreBlog" width="640" height="480" src="http://systemsdaemon.blogspot.com"></iframe>
+		
+		<!-- case default-->
+		<p ng-switch-default> You have not chosen any option </p>
+	</div>
+</body>
+</html>

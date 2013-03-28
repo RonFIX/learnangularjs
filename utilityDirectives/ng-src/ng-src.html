@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>ng-src</title>
+
+	<meta charset="utf-8"/>
+	<meta name="application-name" content="ng-src example"/>
+
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
+
+	<script>
+	function MyCtrl($scope){
+		$scope.url= "http://angularjs.org/img/AngularJS-large.png";			
+	}	
+	</script>
+</head>
+
+<body ng-app ng-controller="MyCtrl">
+	<!-- The following youtube video describes and demoes the shortcomings of using 
+  src attribute instead of ng-src
+  https://www.youtube.com/watch?v=XUZm7ekNpxU -->
+  <img src="{{url}}"/>
+  <img ng-src="{{url}}"/>
+
+</body>
+</html>
