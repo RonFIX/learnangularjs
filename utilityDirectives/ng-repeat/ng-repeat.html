@@ -9,26 +9,59 @@
 	<script type="text/javascript" 
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"> </script>
 
-	<script src="myController.js"> </script>
+	<script src="arrayCtrl.js"> </script>
+	<script src="keyValCtrl.js"> </script>
 </head>
 
-<body ng-app ng-controller="MyCtrl">
-	<table border="1" width="300">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Marks</th>
-			</tr>
-		</thead>	
+<body ng-app>
+	
+	<!-- =====================================================================
+	Traversing over an array using ng-repeat
+	====================================================================== -->
+	<div style="display: inline; float:left;">
+		<p> Rendered by <b>traversing over an array</b> using ng-repeat </p>
+		<table border="1" width="300" ng-controller="ArrayCtrl">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Marks</th>
+				</tr>
+			</thead>	
 
-		<tbody>
-			<!-- ng-repeat is used over the element which is to be generated multiple times.
-			We are generating multiple rows for multiple students -->
-			<tr ng-repeat="student in studentList">
-				<td>{{student.name}}</td>
-				<td>{{student.marks}}</td>
-			</tr>
-		</tbody>
-	</table>
+			<tbody>
+				<!-- ng-repeat is used over the element which is to be generated multiple times.
+				We are generating multiple rows for multiple students -->
+				<tr ng-repeat="student in studentList">
+					<td>{{student.name}}</td>
+					<td>{{student.marks}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- =====================================================================
+	Traversing over a JavaScript object (key,value) pair using ng-repeat
+	====================================================================== -->
+	<div>
+		<br/>
+		<p> Rendered by <b>traversing over JS object/key-value pair</b> using ng-repeat </p>
+		<table border="1" width="300" ng-controller="KeyValCtrl">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Marks</th>
+				</tr>
+			</thead>	
+
+			<tbody>
+
+				<tr ng-repeat="(name,marks) in studentList">
+					<td>{{name}}</td>
+					<td>{{marks}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </body>
 </html>
