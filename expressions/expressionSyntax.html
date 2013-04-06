@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Expression Syntax</title>
+
+	<meta charset="utf-8"/>
+
+	<script type="text/javascript" src="file:///home/anirudh/Dropbox/WebDev/angular.js"> </script>
+	<script>
+		function mainCtrl($scope){
+			var var2 = 20;
+
+			$scope.var1 = 10;
+			$scope.var2 = 30;
+
+			$scope.func = function(){
+				return "func ret value";
+			};
+		}
+	</script>	
+</head>
+
+<body ng-controller="mainCtrl">
+	
+	<!-- =====================================================================
+	only Model variables in the controller are accessible. 
+	There are two variables in the controller with the name "var2". however
+	only one of them is a model variable. 
+	====================================================================== -->
+	<p> value of variable "var1" = <b>{{var1}}</b> </p>
+	<p> value of variable "var2" = <b>{{var2}}</b> </p>
+	<hr/>
+
+	<!-- =====================================================================
+	Functions in the controller can be called and the return value is populated in expression
+	====================================================================== -->
+	<p>return value of function "func" = <b>{{func()}}</b></p>
+	<hr/>
+
+	<!-- =====================================================================
+	Comparision:  ">, >=, <, <=, == and !=". "=== and !==" isn't allowed.
+	====================================================================== -->
+	<p> var2(30)-var1(10) < 7:&nbsp;<b>{{ (var2-var1) < 7}}</b></p>
+	<!--Uncomment to check that "===" doesn't work. Try "!==" as well
+		<p>{{ var2===30 }}</p>
+	-->
+	<hr/>
+
+	<!-- =====================================================================
+	Arithmetic operators:  using "+,-,%,/" is allowed but using "++,--" is not allowed
+	====================================================================== -->
+	<p> 30 %(mod) 29 = <b>{{ var2 % 29 }}</b> </p>
+	<!--Uncomment to check that "++" doesn't work. Try "--" as well
+		<p> ++30 = {{++30}}</p>
+	-->
+	<hr/>
+
+	<!-- =====================================================================
+	Using AND, OR, NOT conditions
+	====================================================================== -->
+	<p> NOT(var2=30 and var1=10):&nbsp; <b>{{!(var2==30 && var1==10)}}</b></p>
+	<hr/>
+
+	<!-- =====================================================================
+	What doesn't work
+	====================================================================== -->
+	<!-- Ternary operators -->
+	<!-- <p> {{var1>0?'4':'5'}} </p> -->
+
+	<!-- If else -->
+	<!--<p> {{ if(var1>0)var1 else var2  }} </p>-->
+
+	<!-- loops -->
+	<!--<p> {{while(var1>0){var1=var1-1;}}} </p>-->
+
+</body>
+</html>
