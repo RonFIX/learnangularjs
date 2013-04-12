@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Expression Syntax</title>
+
+	<meta charset="utf-8"/>
+
+	<script type="text/javascript" src="file:///home/anirudh/Dropbox/WebDev/angular.js"> </script> -->
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"> </script>-->
+
+	<script>
+	function mainCtrl($scope){
+		$scope.emailPlaceholder = "mail@example.com";		
+	}
+	</script>	
+</head>
+
+<body ng-controller="mainCtrl">
+
+	<label> Select input placeholder: </label>
+	<select ng-model="emailPlaceholder">
+		<option>mail@example.com</option>
+		<option>id@example.org</option>
+	</select>
+
+		<!-- =====================================================================
+		Using expressions in HTML attributes is same as using them in text nodes in tags
+		====================================================================== -->
+		<input placeholder="{{emailPlaceholder}}"/>
+</body>
+</html>
