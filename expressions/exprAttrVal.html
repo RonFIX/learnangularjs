@@ -5,8 +5,7 @@
 
 	<meta charset="utf-8"/>
 
-	<script type="text/javascript" src="file:///home/anirudh/Dropbox/WebDev/angular.js"> </script> -->
-	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"> </script>-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"> </script>
 
 	<script>
 	function mainCtrl($scope){
@@ -20,12 +19,19 @@
 	<label> Select input placeholder: </label>
 	<select ng-model="emailPlaceholder">
 		<option>mail@example.com</option>
-		<option>id@example.org</option>
+		<option>id@my.org</option>
 	</select>
+	<br/>
 
-		<!-- =====================================================================
-		Using expressions in HTML attributes is same as using them in text nodes in tags
-		====================================================================== -->
-		<input placeholder="{{emailPlaceholder}}"/>
+	<p> Selecting a value from the dropdown will replace the placeholder as well as resize the input box</p>
+	<!-- =====================================================================
+	Using expressions in HTML attributes is same as using them in text nodes in tags
+
+	Carefully check size attribute: there is a "0" just outside the expression.
+	So the expression will evaluate to
+	size={{16-2}}0 = 140   for mail@example.com
+	size={{9-2}}0 = 70     for id@my.org
+	====================================================================== -->
+	<input type="text" placeholder="{{emailPlaceholder}}" size="{{emailPlaceholder.length - 2}}0"/>
 </body>
 </html>
