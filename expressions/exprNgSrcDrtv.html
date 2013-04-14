@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Expression Syntax in directives</title>
+
+	<meta charset="utf-8"/>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"> </script>
+</head>
+
+<body>
+
+	<p> The images may take a few extra seconds to load if your internet connectivity is slow </p>
+
+	<select ng-init="framework='angularjs.org'" ng-model="framework">
+		<option value="angularjs.org">AngularJS</option>
+		<option value="jquery.com/jquery-wp-content/themes/jquery.com/i">JQuery</option>
+	</select>
+	
+	<!-- =====================================================================
+				*************Code Explanation***********
+
+	ng-src unlike many other directives expects its value to contain {{}}. 
+
+	ng-src can used for generating dynamic image URL. ng-init unlike many 
+	other have left this job on "interpolate service" which take cares
+	of replacing text inside "{{ }}".
+
+	====================================================================== -->
+	<img alt="framework image here" ng-src="http://{{framework}}/favicon.ico"/>
+
+</body>
+</html> 

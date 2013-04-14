@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Expression Syntax in directives</title>
+
+	<meta charset="utf-8"/>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"> </script>
+
+	<script>
+	function mainCtrl($scope){
+		$scope.emailPlaceholder = "mail@example.com";		
+	}
+	</script>	
+</head>
+
+<body ng-controller="mainCtrl">
+
+	<!-- =====================================================================
+	*************Code Explanation***********
+
+	ng-switch attaches a listener for changes in the value of the "on" attribute.
+	However just before ng-switch can add that listener, AngularJS gives the 
+	attribute value to expressionEvaluator considering that the value is written
+	inside {{}}.
+
+	Note:  The piece of code which takes care of dynamic replacement of text 
+	written inside {{}}	is called "interpolation service". Interpolation service 
+	removes text along with	{{}} from the tag or attribute and replaces the tag 
+	or attribute with the actual value later.
+
+	So in this code "interpolation service" will remove the value "{{emailPlaceholder}}"
+	from ng-switch. When ng-switch tries to add a change listener to "on" attribute's
+	value it will not be able to do so because "{{emailPlaceHolder}}" is removed by
+	"interpolation service".
+
+	Note: Once mainCtrl is invoked "interpolation service" replaces {{emailPlaceholder}}
+	with "main@example.com". But by that its too late since ng-switch had failed
+	to add value change listener and will never get to know that {{emailPlaceholder}}
+	is replaced.
+	====================================================================== -->
+	<div ng-switch on="{{emailPlaceholder}}">
+		<p ng-switch-when="mail@example.com"> mail@example.com </p>
+		<p ng-switch-default> Default case</p>
+	</div>
+
+</body>
+</html> 

@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Expression Syntax in directives</title>
+
+	<meta charset="utf-8"/>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"> </script>
+
+	<script>
+	function mainCtrl($scope){
+		$scope.emailPlaceholder = "mail@example.com";		
+	}
+	</script>	
+</head>
+
+<body ng-controller="mainCtrl">
+
+	<p>Error you might see in the debugger console </p>
+	<p style="color:red;">Error: Syntax Error: Token 'emailPlaceholder.length' is unexpected, expecting [:] at column 9 of the expression [myVal={{emailPlaceholder.length}}] starting at [emailPlaceholder.length}}].
+    at Error (<anonymous>)</p>
+
+    <hr/>
+	<p style="color: lightblue;"> Read code explanation in comments to know why this code fails </p>
+	
+	<hr/>
+
+	<!-- =====================================================================
+				*************Code Explanation***********
+
+	ng-init simply takes the value in double quotes and evaluates it as an 
+	expression as if it had been written inside "{{}}".
+
+	So if you use "{{}}" it will throw an error since "{{}}" is not considered 
+	a part of the expression. It is just a delimiter to know where an expression 
+	starts and where it ends.
+	
+	You can assume the following to be equivalent
+	
+	<p> {{ myVal = emailPlaceholder.length }} </p>
+	ng-init="myVal = emailPlaceholder.length"
+
+	The correct way of usage of ng-init is without using {{}} in ng-init's value
+	====================================================================== -->
+	
+	<div ng-init="myVal={{emailPlaceholder.length}}">
+		<p>Code output: </p>
+		<p> {{'Length of ' + emailPlaceholder + '=' + myVal}} </p>
+	</div>
+
+</body>
+</html> 
