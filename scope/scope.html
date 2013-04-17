@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Scope rename</title>
+
+		<meta charset="utf-8"/>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"> </script>
+	</head>
+	
+	<script>	
+		function myCtrl(modelVar){
+			modelVar.var1 = "hello";
+		}
+		//We will learn about this in Dependency Injection section of our book.
+		myCtrl.$inject = ['$scope'];
+
+	</script>
+	
+	<body ng-app ng-controller="myCtrl">
+
+		<p> {{'Var1 = ' + var1}} </p>
+
+	</body>
+</html>
